@@ -6,6 +6,10 @@ class TeamGenerator {
   }
 
   generateTeams() {
+    if (!Array.isArray(this.players)) {
+      console.log("players need to be an array");
+      return;
+    }
     let shuffledPlayers = [...this.players].sort(() => 0.5 - Math.random()); // Mélange aléatoire des joueurs
     let teamIndex = 0;
 
