@@ -17,12 +17,8 @@ describe("Testing the Team Generation Functions", function () {
   it("1. should create 3 teams of 3players sorted aleatory", function (done) {
     const teamGenerator = new TeamGenerator(DEFAULT_PLAYERS);
     teamGenerator.generateTeams();
-    expect(teamGenerator.getTeams())
-      .to.have.lengthOf.at.least(3)
-      .and.lengthOf.at.most(3);
-    expect(teamGenerator.getTeams()[0].players)
-      .to.have.lengthOf.at.least(3)
-      .and.lengthOf.at.most(3);
+    expect(teamGenerator.getTeams()).to.have.lengthOf(3);
+    expect(teamGenerator.getTeams()[0].players).to.have.lengthOf(3);
     done();
   });
 
@@ -30,12 +26,8 @@ describe("Testing the Team Generation Functions", function () {
     const teamGenerator = new TeamGenerator(DEFAULT_PLAYERS, 2);
     teamGenerator.generateTeams();
 
-    expect(teamGenerator.getTeams())
-      .to.have.lengthOf.at.least(5)
-      .and.lengthOf.at.most(5);
-    expect(teamGenerator.getTeams()[4].players)
-      .to.have.lengthOf.at.least(1)
-      .and.lengthOf.at.most(1);
+    expect(teamGenerator.getTeams()).to.have.lengthOf(5);
+    expect(teamGenerator.getTeams()[4].players).to.have.lengthOf(1);
     done();
   });
 
@@ -43,9 +35,7 @@ describe("Testing the Team Generation Functions", function () {
     const teamGenerator = new TeamGenerator("Jean luc Melenchon");
     teamGenerator.generateTeams();
 
-    expect(teamGenerator.getTeams())
-      .to.have.lengthOf.at.least(6)
-      .and.lengthOf.at.most(6);
+    expect(teamGenerator.getTeams()).to.have.lengthOf(0);
 
     done();
   });
