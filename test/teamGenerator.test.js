@@ -25,4 +25,28 @@ describe("Testing the Team Generation Functions", function () {
       .and.lengthOf.at.most(3);
     done();
   });
+
+  it("2. should create 4teams of 2 players and 1 alone ", function (done) {
+    const teamGenerator = new TeamGenerator(DEFAULT_PLAYERS, 2);
+    teamGenerator.generateTeams();
+
+    expect(teamGenerator.getTeams())
+      .to.have.lengthOf.at.least(5)
+      .and.lengthOf.at.most(5);
+    expect(teamGenerator.getTeams()[4].players)
+      .to.have.lengthOf.at.least(1)
+      .and.lengthOf.at.most(1);
+    done();
+  });
+
+  it("2. should not create teams if players param is a string ", function (done) {
+    const teamGenerator = new TeamGenerator("Jean luc Melenchon");
+    teamGenerator.generateTeams();
+
+    expect(teamGenerator.getTeams())
+      .to.have.lengthOf.at.least(6)
+      .and.lengthOf.at.most(6);
+
+    done();
+  });
 });
