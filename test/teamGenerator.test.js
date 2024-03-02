@@ -30,4 +30,13 @@ describe("Testing the Team Generation Functions", function () {
     expect(teamGenerator.getTeams()[4].players).to.have.lengthOf(1);
     done();
   });
+
+  it("2. should not create teams if players param is a string ", function (done) {
+    const teamGenerator = new TeamGenerator("Jean luc Melenchon");
+    teamGenerator.generateTeams();
+
+    expect(teamGenerator.getTeams()).to.have.lengthOf(0);
+
+    done();
+  });
 });
