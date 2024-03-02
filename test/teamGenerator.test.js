@@ -21,4 +21,13 @@ describe("Testing the Team Generation Functions", function () {
     expect(teamGenerator.getTeams()[0].players).to.have.lengthOf(3);
     done();
   });
+
+  it("2. should create 4 teams of 2 players and 1 alone ", function (done) {
+    const teamGenerator = new TeamGenerator(DEFAULT_PLAYERS, 2);
+    teamGenerator.generateTeams();
+
+    expect(teamGenerator.getTeams()).to.have.lengthOf(5);
+    expect(teamGenerator.getTeams()[4].players).to.have.lengthOf(1);
+    done();
+  });
 });
