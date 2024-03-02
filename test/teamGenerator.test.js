@@ -48,4 +48,13 @@ describe("Testing the Team Generation Functions", function () {
 
     done();
   });
+
+  it("5. should not pass even if NaN is type number", function (done) {
+    const teamGenerator = new TeamGenerator(DEFAULT_PLAYERS, NaN);
+    teamGenerator.generateTeams();
+
+    expect(teamGenerator.getTeams()).to.have.lengthOf(0);
+
+    done();
+  });
 });
