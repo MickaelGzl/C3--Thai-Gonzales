@@ -6,8 +6,13 @@ class TeamGenerator {
   }
 
   generateTeams() {
-    if (!Array.isArray(this.players)) {
-      console.log("players need to be an array");
+    if (
+      !Array.isArray(this.players) ||
+      typeof this.playersPerTeam !== "number"
+    ) {
+      console.log(
+        "paramètres invalide. La classe nécessite un tableau de joueurs et optionnellement un nombre"
+      );
       return;
     }
     let shuffledPlayers = [...this.players].sort(() => 0.5 - Math.random()); // Mélange aléatoire des joueurs
