@@ -18,7 +18,14 @@ describe("Testing the Team Generation Functions", function () {
     const teamGenerator = new TeamGenerator(DEFAULT_PLAYERS);
     teamGenerator.generateTeams();
     expect(teamGenerator.getTeams()).to.have.lengthOf(3);
-    expect(teamGenerator.getTeams()[0].players).to.have.lengthOf(3);
+
+    teamGenerator.getTeams().forEach((team) => {
+      expect(team.players.length).to.equal(3);
+      team.players.forEach((player) => {
+        expect(DEFAULT_PLAYERS.includes(player)).to.be.true;
+      });
+    });
+
     done();
   });
 
@@ -28,6 +35,7 @@ describe("Testing the Team Generation Functions", function () {
 
     expect(teamGenerator.getTeams()).to.have.lengthOf(5);
     expect(teamGenerator.getTeams()[4].players).to.have.lengthOf(1);
+
     done();
   });
 
