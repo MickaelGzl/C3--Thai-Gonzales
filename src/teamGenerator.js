@@ -6,6 +6,9 @@ class TeamGenerator {
   }
 
   verifyTeamsEquality() {
+    if (this.players.length % this.playersPerTeam !== 0) {
+      return false;
+    }
     return true;
   }
 
