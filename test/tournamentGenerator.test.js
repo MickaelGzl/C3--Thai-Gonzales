@@ -28,3 +28,17 @@ describe("Testing the Tournament generator Functions", function () {
     done();
   });
 });
+describe("create functionnality for Tournament generation in TDD ", function () {
+  before(function () {
+    const teamGenerator = new TeamGenerator([...DEFAULT_PLAYERS].splice(0, 9));
+    teamGenerator.generateTeams();
+    teams = teamGenerator.getTeams();
+  });
+  it("1. it should not poule cause insufisante teams", function (done) {
+    const tournamentGenerator = new TournamentGenerator(teams);
+    expect(teams).to.have.lengthOf(3);
+    expect(tournamentGenerator.checkNumberOfTeams()).to.not.be.true;
+
+    done();
+  });
+});
