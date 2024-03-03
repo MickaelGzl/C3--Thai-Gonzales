@@ -12,17 +12,28 @@ class TeamGenerator {
     return true;
   }
 
-  generateTeams() {
+  validateEntries() {
     if (!Array.isArray(this.players)) {
-      console.log("players need to be an array");
-      return;
+      return [false, "players need to be an array"];
     } else if (
       typeof this.playersPerTeam !== "number" ||
       isNaN(this.playersPerTeam)
     ) {
-      console.log("number of players per teams need to be a number");
-      return;
+      return [false, "number of players per teams need to be a number"];
     }
+    return [true];
+  }
+
+  generateTeams() {
+    const isValidEntries = this.validateEntries();
+    if (!isValidEntries[0]) return console.log(isValidEntries[1]);
+
+    if (!this.verifyTeamsEquality()) {
+      return console.log(
+        "Les teams générées ne sont pas égales en termes de joueurs."
+      );
+    }
+
     let shuffledPlayers = [...this.players].sort(() => 0.5 - Math.random()); // Mélange aléatoire des joueurs
     let teamIndex = 0;
 
