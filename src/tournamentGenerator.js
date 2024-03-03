@@ -46,6 +46,12 @@ class TournamentGenerator {
     this.generateFinalStages();
     return this.finalStages;
   }
+  checkNumberOfTeams() {
+    if (this.teams.length < 4) {
+      return false;
+    }
+    return true;
+  }
 }
 
 export default TournamentGenerator;
