@@ -66,3 +66,14 @@ describe("Testing the Team Generation Functions", function () {
     done();
   });
 });
+
+describe("create functionnality for team generation in TDD ", function () {
+  it("1. return true if each teams have same number of players", function (done) {
+    const teamGenerator = new TeamGenerator(DEFAULT_PLAYERS, 2);
+    teamGenerator.generateTeams();
+
+    expect(teamGenerator.verifyTeamsEquality()).to.not.be.true; // cause 9 / 2 let a team with only 1 player
+
+    done();
+  });
+});

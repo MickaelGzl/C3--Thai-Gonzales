@@ -5,6 +5,10 @@ class TeamGenerator {
     this.teams = [];
   }
 
+  verifyTeamsEquality() {
+    return true;
+  }
+
   generateTeams() {
     if (!Array.isArray(this.players)) {
       console.log("players need to be an array");
