@@ -47,6 +47,9 @@ class TournamentGenerator {
     return this.finalStages;
   }
   checkNumberOfTeams() {
+    if (this.teams.length < 4) {
+      return false;
+    }
     return true;
   }
 }
