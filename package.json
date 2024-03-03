@@ -23,5 +23,8 @@
     "csv-parser": "^3.0.0",
     "mocha": "^10.3.0",
     "save-dev": "^0.0.1-security"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^8.4.1"
   }
 }

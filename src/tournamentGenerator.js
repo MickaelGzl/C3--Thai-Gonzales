@@ -6,7 +6,6 @@ class TournamentGenerator {
   }
 
   generatePoules() {
-    console.log(this.teams);
     let shuffledTeams = [...this.teams].sort(() => 0.5 - Math.random());
     const nbPoules = Math.floor(shuffledTeams.length / 4);
     for (let i = 0; i < nbPoules; i++) {
