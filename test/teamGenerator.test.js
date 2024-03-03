@@ -29,12 +29,11 @@ describe("Testing the Team Generation Functions", function () {
     done();
   });
 
-  it("2. should create 4 teams of 2 players and 1 alone ", function (done) {
+  it("2. should not create teams cause one player is alone ", function (done) {
     const teamGenerator = new TeamGenerator(DEFAULT_PLAYERS, 2);
     teamGenerator.generateTeams();
 
-    expect(teamGenerator.getTeams()).to.have.lengthOf(5);
-    expect(teamGenerator.getTeams()[4].players).to.have.lengthOf(1);
+    expect(teamGenerator.getTeams()).to.have.lengthOf(0);
 
     done();
   });
@@ -62,6 +61,17 @@ describe("Testing the Team Generation Functions", function () {
     teamGenerator.generateTeams();
 
     expect(teamGenerator.getTeams()).to.have.lengthOf(0);
+
+    done();
+  });
+});
+
+describe("create functionnality for team generation in TDD ", function () {
+  it("1. return true if each teams have same number of players", function (done) {
+    const teamGenerator = new TeamGenerator(DEFAULT_PLAYERS, 2);
+    teamGenerator.generateTeams();
+
+    expect(teamGenerator.verifyTeamsEquality()).to.not.be.true; // cause 9 / 2 let a team with only 1 player
 
     done();
   });
