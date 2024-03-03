@@ -7,17 +7,18 @@ const customFaker = new Faker({ locale: [fr] });
 const DEFAULT_PLAYERS = customFaker.helpers.multiple(createPlayer, {
   count: 24,
 });
-
+let teams;
 function createPlayer() {
   return customFaker.person.firstName();
 }
 
 describe("Testing the Tournament generator Functions", function () {
-  it("1. it should generate poule of 4 teams ", function (done) {
-    console.log(DEFAULT_PLAYERS);
+  before(function () {
     const teamGenerator = new TeamGenerator(DEFAULT_PLAYERS);
     teamGenerator.generateTeams();
-    const teams = teamGenerator.getTeams();
+    teams = teamGenerator.getTeams();
+  });
+  it("1. it should generate poule of 4 teams ", function (done) {
     const tournamentGenerator = new TournamentGenerator(teams);
     tournamentGenerator.generatePoules();
     expect(tournamentGenerator.poules).to.have.lengthOf(
