@@ -31,7 +31,9 @@ class TournamentGenerator {
     while (currentStage.length > 1) {
       let nextStage = [];
       for (let i = 0; i < currentStage.length; i += 2) {
-        let winner = currentStage[i + (Math.random() > 0.5 ? 0 : 1)];
+        let winner = currentStage[i + 1]
+          ? currentStage[i + (Math.random() > 0.5 ? 0 : 1)]
+          : currentStage[i];
         nextStage.push(winner);
       }
       this.finalStages.push(nextStage);
